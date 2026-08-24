@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Global Express</string>
+    <string name="title_activity_main">Global Express</string>
+    <string name="package_name">com.globalexpress.data</string>
+    <string name="custom_url_scheme">com.globalexpress.data</string>
+</resources>

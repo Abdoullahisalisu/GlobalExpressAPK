@@ -13,11 +13,22 @@
   "author": "Apache Cordova Team",
   "license": "Apache-2.0",
   "devDependencies": {
-    "cordova-android": "^15.1.0"
+    "cordova-android": "^15.1.0",
+    "cordova-plugin-splashscreen": "^6.0.1",
+    "cordova-plugin-statusbar": "^4.0.0"
   },
   "cordova": {
     "platforms": [
       "android"
-    ]
+    ],
+    "plugins": {
+      "cordova-plugin-splashscreen": {},
+      "cordova-plugin-statusbar": {}
+    }
+  },
+  "dependencies": {
+    "@capacitor/android": "^8.5.0",
+    "@capacitor/cli": "^8.5.0",
+    "@capacitor/core": "^8.5.0"
   }
 }
