@@ -39,7 +39,16 @@ jobs:
           cp res-icons/icon-xhdpi.png platforms/android/app/src/main/res/mipmap-xhdpi/globalexpress_icon.png
           cp res-icons/icon-xxhdpi.png platforms/android/app/src/main/res/mipmap-xxhdpi/globalexpress_icon.png
           cp res-icons/icon-xxxhdpi.png platforms/android/app/src/main/res/mipmap-xxxhdpi/globalexpress_icon.png
-          sed -i 's#android:icon="@mipmap/ic_launcher"#android:icon="@mipmap/globalexpress_icon"#' platforms/android/app/src/main/AndroidManifest.xml
+
+          sed -i 's/@mipmap\/ic_launcher/@mipmap\/globalexpress_icon/g' platforms/android/app/src/main/AndroidManifest.xml
+
+      - name: Verify launcher icon
+        run: |
+          echo "Checking AndroidManifest..."
+          grep -n 'android:icon' platforms/android/app/src/main/AndroidManifest.xml
+
+          echo "Checking GlobalExpress icons..."
+          ls -lh platforms/android/app/src/main/res/mipmap-*/globalexpress_icon.png
 
       - name: Build APK
         run: npx cordova build android --debug
