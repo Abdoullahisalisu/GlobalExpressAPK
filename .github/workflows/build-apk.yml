@@ -31,23 +31,22 @@ jobs:
 
       - name: Add Android platform
         run: npx cordova platform add android@15.1.0
-            - name: Apply GlobalExpress icon
+
+      - name: Apply GlobalExpress icon
         run: |
           find platforms/android/app/src/main/res -path "*/mipmap-*-v26/ic_launcher.xml" -delete
           find platforms/android/app/src/main/res -path "*/mipmap-*-v26/ic_launcher_round.xml" -delete
-
           cp res-icons/icon-mdpi.png platforms/android/app/src/main/res/mipmap-mdpi/ic_launcher.png
           cp res-icons/icon-hdpi.png platforms/android/app/src/main/res/mipmap-hdpi/ic_launcher.png
           cp res-icons/icon-xhdpi.png platforms/android/app/src/main/res/mipmap-xhdpi/ic_launcher.png
           cp res-icons/icon-xxhdpi.png platforms/android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png
           cp res-icons/icon-xxxhdpi.png platforms/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png
-
           cp res-icons/icon-mdpi.png platforms/android/app/src/main/res/mipmap-mdpi/ic_launcher_round.png
           cp res-icons/icon-hdpi.png platforms/android/app/src/main/res/mipmap-hdpi/ic_launcher_round.png
           cp res-icons/icon-xhdpi.png platforms/android/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png
           cp res-icons/icon-xxhdpi.png platforms/android/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png
           cp res-icons/icon-xxxhdpi.png platforms/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png
-      
+
       - name: Build APK
         run: npx cordova build android --debug
 
