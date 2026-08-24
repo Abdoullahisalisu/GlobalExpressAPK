@@ -15,8 +15,7 @@
 
     <content src="https://globalexpress-7bm1.onrender.com" />
 
-    <!-- GlobalExpress App Icon -->
-    <icon src="www/img/logo.png" />
+    <icon src="www/img/globalexpress-icon.png" />
 
 
     <allow-intent href="http://*/*" />
