@@ -1,34 +1,20 @@
+
 {
   "name": "com.globalexpress.data",
   "displayName": "Global Express",
   "version": "1.0.0",
-  "description": "A sample Apache Cordova application that responds to the deviceready event.",
+  "description": "Global Express Data App",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [
-    "ecosystem:cordova"
-  ],
-  "author": "Apache Cordova Team",
+  "author": "Global Express",
   "license": "Apache-2.0",
-  "devDependencies": {
-    "cordova-android": "^15.1.0",
-    "cordova-plugin-splashscreen": "^6.0.1",
-    "cordova-plugin-statusbar": "^4.0.0"
-  },
-  "cordova": {
-    "platforms": [
-      "android"
-    ],
-    "plugins": {
-      "cordova-plugin-splashscreen": {},
-      "cordova-plugin-statusbar": {}
-    }
-  },
   "dependencies": {
     "@capacitor/android": "^8.5.0",
-    "@capacitor/cli": "^8.5.0",
     "@capacitor/core": "^8.5.0"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^8.5.0"
   }
 }

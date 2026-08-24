@@ -30,21 +30,7 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Sync Capacitor Android
-        run: npx cap sync android
-
-      - name: Apply GlobalExpress icon
-        run: |
-          cp res-icons/icon-mdpi.png android/app/src/main/res/mipmap-mdpi/ic_launcher.png
-          cp res-icons/icon-hdpi.png android/app/src/main/res/mipmap-hdpi/ic_launcher.png
-          cp res-icons/icon-xhdpi.png android/app/src/main/res/mipmap-xhdpi/ic_launcher.png
-          cp res-icons/icon-xxhdpi.png android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png
-          cp res-icons/icon-xxxhdpi.png android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png
-
-          rm -f android/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml
-          rm -f android/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml
-
-      - name: Build APK
+      - name: Build Capacitor Android APK
         working-directory: android
         run: ./gradlew assembleDebug
 
