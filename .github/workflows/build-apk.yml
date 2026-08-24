@@ -19,42 +19,37 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: npm
 
       - name: Setup Java
         uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: "17"
+          java-version: "21"
 
       - name: Install dependencies
         run: npm ci
 
-      - name: Add Android platform
-        run: npx cordova platform add android@15.1.0
+      - name: Sync Capacitor Android
+        run: npx cap sync android
 
-      - name: Install GlobalExpress icon
+      - name: Apply GlobalExpress icon
         run: |
-          cp res-icons/icon-mdpi.png platforms/android/app/src/main/res/mipmap-mdpi/globalexpress_icon.png
-          cp res-icons/icon-hdpi.png platforms/android/app/src/main/res/mipmap-hdpi/globalexpress_icon.png
-          cp res-icons/icon-xhdpi.png platforms/android/app/src/main/res/mipmap-xhdpi/globalexpress_icon.png
-          cp res-icons/icon-xxhdpi.png platforms/android/app/src/main/res/mipmap-xxhdpi/globalexpress_icon.png
-          cp res-icons/icon-xxxhdpi.png platforms/android/app/src/main/res/mipmap-xxxhdpi/globalexpress_icon.png
+          cp res-icons/icon-mdpi.png android/app/src/main/res/mipmap-mdpi/ic_launcher.png
+          cp res-icons/icon-hdpi.png android/app/src/main/res/mipmap-hdpi/ic_launcher.png
+          cp res-icons/icon-xhdpi.png android/app/src/main/res/mipmap-xhdpi/ic_launcher.png
+          cp res-icons/icon-xxhdpi.png android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png
+          cp res-icons/icon-xxxhdpi.png android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png
 
-          sed -i 's/@mipmap\/ic_launcher/@mipmap\/globalexpress_icon/g' platforms/android/app/src/main/AndroidManifest.xml
-
-      - name: Verify launcher icon
-        run: |
-          echo "Checking AndroidManifest..."
-          grep -n 'android:icon' platforms/android/app/src/main/AndroidManifest.xml
-
-          echo "Checking GlobalExpress icons..."
-          ls -lh platforms/android/app/src/main/res/mipmap-*/globalexpress_icon.png
+          rm -f android/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml
+          rm -f android/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml
 
       - name: Build APK
-        run: npx cordova build android --debug
+        working-directory: android
+        run: ./gradlew assembleDebug
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: GlobalExpress-debug-apk
-          path: platforms/android/app/build/outputs/apk/debug/app-debug.apk
+          path: android/app/build/outputs/apk/debug/app-debug.apk
