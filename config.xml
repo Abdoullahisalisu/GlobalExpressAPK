@@ -18,9 +18,6 @@
     <!-- GlobalExpress App Icon -->
     <icon src="www/img/logo.png" />
 
-    <!-- Disable Cordova splash delay -->
-    <preference name="SplashScreenDelay" value="0" />
-    <preference name="AutoHideSplashScreen" value="true" />
 
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
