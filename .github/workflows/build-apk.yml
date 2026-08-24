@@ -1,3 +1,4 @@
+
 name: Build GlobalExpress APK
 
 on:
@@ -31,14 +32,8 @@ jobs:
       - name: Add Android platform
         run: npx cordova platform add android@15.1.0
 
-      - name: Apply GlobalExpress icons
+      - name: Apply GlobalExpress icon
         run: |
-          mkdir -p platforms/android/app/src/main/res/mipmap-mdpi
-          mkdir -p platforms/android/app/src/main/res/mipmap-hdpi
-          mkdir -p platforms/android/app/src/main/res/mipmap-xhdpi
-          mkdir -p platforms/android/app/src/main/res/mipmap-xxhdpi
-          mkdir -p platforms/android/app/src/main/res/mipmap-xxxhdpi
-
           cp res-icons/icon-mdpi.png platforms/android/app/src/main/res/mipmap-mdpi/ic_launcher.png
           cp res-icons/icon-hdpi.png platforms/android/app/src/main/res/mipmap-hdpi/ic_launcher.png
           cp res-icons/icon-xhdpi.png platforms/android/app/src/main/res/mipmap-xhdpi/ic_launcher.png
